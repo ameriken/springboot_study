@@ -4,3 +4,4 @@
 
 ## feature/greeting
 挨拶ができるようになりました。
+https://spring.io/guides/gs/rest-service/
