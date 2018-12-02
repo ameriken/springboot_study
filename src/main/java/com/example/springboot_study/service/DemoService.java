@@ -23,15 +23,20 @@ public class DemoService {
     public Instructor saveInstructor() {
 
         InstructorDetail instructorDetail = new InstructorDetail();
-        instructorDetail.setHobby("game");
-        instructorDetail.setYoutubeChannel("kanekinfitness");
+        instructorDetail.setHobby("kintore");
+        instructorDetail.setYoutubeChannel("amekenfitness");
 
         Instructor instructor = new Instructor();
-        instructor.setEmail("hogehoge@gmail.com");
-        instructor.setFirstName("hogehoge");
-        instructor.setLastName("fugafuga");
+        instructor.setEmail("fuwafuwa@gmail.com");
+        instructor.setFirstName("fuwafuwa");
+        instructor.setLastName("fugafuwa");
         instructor.setInstructorDetail(instructorDetail);
 
         return this.instructorRepository.save(instructor);
+    }
+
+    public String deleteInstructor() {
+        this.instructorRepository.deleteById(6L);
+        return "deleted";
     }
 }
