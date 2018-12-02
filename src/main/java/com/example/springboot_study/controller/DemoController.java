@@ -74,4 +74,14 @@ public class DemoController {
         }
         return "true course";
     }
+
+    @GetMapping("/review")
+    public String reviewDataAccess() {
+        try {
+            this.demoService.reviewCourse();
+        } catch(Exception e) {
+            return "false Review";
+        }
+        return "true Review";
+    }
 }

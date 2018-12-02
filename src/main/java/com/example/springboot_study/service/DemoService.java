@@ -3,6 +3,7 @@ package com.example.springboot_study.service;
 import com.example.springboot_study.entity.Course;
 import com.example.springboot_study.entity.Instructor;
 import com.example.springboot_study.entity.InstructorDetail;
+import com.example.springboot_study.entity.Review;
 import com.example.springboot_study.repository.CourseRepository;
 import com.example.springboot_study.repository.InstructorDetailRepository;
 import com.example.springboot_study.repository.InstructorRepository;
@@ -76,5 +77,15 @@ public class DemoService {
     public String deleteCourse() {
         this.courseRepository.deleteById(6L);
         return "deleted";
+    }
+
+    public String reviewCourse() {
+
+        Course tmpCourse = new Course("Pacman - How To Score One Million Points");
+        tmpCourse.addReview(new Review("GREAT!!!"));
+        tmpCourse.addReview(new Review("COOL!!!"));
+        tmpCourse.addReview(new Review("AWESOMME!!!"));
+        this.courseRepository.save(tmpCourse);
+        return "success";
     }
 }
