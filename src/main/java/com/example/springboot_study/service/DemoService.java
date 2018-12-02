@@ -3,11 +3,14 @@ package com.example.springboot_study.service;
 import com.example.springboot_study.entity.Course;
 import com.example.springboot_study.entity.Instructor;
 import com.example.springboot_study.entity.InstructorDetail;
+import com.example.springboot_study.repository.CourseRepository;
 import com.example.springboot_study.repository.InstructorDetailRepository;
 import com.example.springboot_study.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,11 +18,13 @@ public class DemoService {
 
     private final InstructorRepository instructorRepository;
     private final InstructorDetailRepository instructorDetailRepository;
+    private final CourseRepository courseRepository;
 
     @Autowired
-    public DemoService(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository) {
+    public DemoService(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository,CourseRepository courseRepository) {
         this.instructorRepository = instructorRepository;
         this.instructorDetailRepository = instructorDetailRepository;
+        this.courseRepository = courseRepository;
     }
 
 
@@ -66,5 +71,10 @@ public class DemoService {
 
         return this.instructorRepository.save(instructor);
 
+    }
+
+    public String deleteCourse() {
+        this.courseRepository.deleteById(6L);
+        return "deleted";
     }
 }

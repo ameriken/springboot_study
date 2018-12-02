@@ -64,4 +64,14 @@ public class DemoController {
         }
         return "true course";
     }
+
+    @GetMapping("/delete/course")
+    public String deleteCourseDataAccess() {
+        try {
+            this.demoService.deleteCourse();
+        } catch(Exception e) {
+            return "false Course";
+        }
+        return "true course";
+    }
 }
