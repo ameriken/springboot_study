@@ -15,14 +15,18 @@ public class Instructor {
     private String firstName;
 
     @Column(name="last_name")
-    private String LastName;
+    private String lastName;
 
     @Column(name="email")
     private String email;
 
-    public Instructor(String firstName, String lastName, String email) {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="instructor_detail_id")
+    private InstructorDetail instructorDetail;
+
+    public Instructor() {
         this.firstName = firstName;
-        LastName = lastName;
+        this.lastName = lastName;
         this.email = email;
     }
 
@@ -35,11 +39,11 @@ public class Instructor {
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        lastName = lastName;
     }
 
     public String getEmail() {
