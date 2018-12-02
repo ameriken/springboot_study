@@ -43,7 +43,7 @@ public class Instructor {
     }
 
     public void setLastName(String lastName) {
-        lastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getEmail() {

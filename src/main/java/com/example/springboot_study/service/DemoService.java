@@ -7,6 +7,7 @@ import com.example.springboot_study.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service
@@ -46,5 +47,12 @@ public class DemoService {
         Optional<InstructorDetail> instructorDetail = this.instructorDetailRepository.findById(1L);
         return instructorDetail;
 
+    }
+
+    public String deleteInstructorDetail() {
+        InstructorDetail detail = this.instructorDetailRepository.findById(2L).get();
+        detail.getInstructor().setInstructorDetail(null);
+        this.instructorDetailRepository.deleteById(2L);
+        return "deleted";
     }
 }

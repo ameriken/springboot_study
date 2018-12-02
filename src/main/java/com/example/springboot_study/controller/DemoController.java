@@ -38,6 +38,15 @@ public class DemoController {
         }
     }
 
+    @GetMapping("/delete/instructorDetail")
+    public String deleteInstructorDetailDataAccess() {
+        try {
+            return this.demoService.deleteInstructorDetail();
+        } catch(Exception e) {
+            return "false";
+        }
+    }
+
     @GetMapping("/get")
     public Optional<InstructorDetail> getInstructorDetailDataAccess() {
         try {
