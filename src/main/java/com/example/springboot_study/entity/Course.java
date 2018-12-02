@@ -18,7 +18,7 @@ public class Course {
     @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
-    // TODO: なぜここが必要なのかわからない
+    // TODO: 1.なぜここが必要なのかわからない
     public Course() {
     }
 

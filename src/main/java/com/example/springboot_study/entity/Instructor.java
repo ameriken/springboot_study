@@ -78,6 +78,7 @@ public class Instructor {
 
     public void add(Course tmpCourse) {
         if(courses == null) {
+            // TODO: 1.ここが関係してるかも
             courses = new ArrayList<>();
         }
         courses.add(tmpCourse);
