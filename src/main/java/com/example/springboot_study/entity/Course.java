@@ -1,14 +1,17 @@
 package com.example.springboot_study.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="course")
 public class Course {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
 
+    @Column(name="title")
     private String title;
 
     private Instructor instructor;
