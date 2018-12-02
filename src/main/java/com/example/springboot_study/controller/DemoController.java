@@ -1,12 +1,12 @@
 package com.example.springboot_study.controller;
 
+import com.example.springboot_study.entity.Instructor;
 import com.example.springboot_study.entity.InstructorDetail;
 import com.example.springboot_study.service.DemoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @RestController
@@ -54,5 +54,14 @@ public class DemoController {
         } catch(Exception e) {
             return null;
         }
+    }
+    @GetMapping("/course")
+    public String registerCourseDataAccess() {
+        try {
+            this.demoService.registerCourse();
+        } catch(Exception e) {
+            return "false Course";
+        }
+        return "true course";
     }
 }

@@ -1,6 +1,8 @@
 package com.example.springboot_study.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="instructor")
@@ -23,6 +25,18 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+    @OneToMany(mappedBy = "instructor",
+            cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    List<Course> courses;
+
+    public List<Course> getCourse() {
+        return courses;
+    }
+
+    public void setCourse(List<Course> courses) {
+        this.courses = courses;
+    }
 
     public Instructor() {
         this.firstName = firstName;
@@ -60,5 +74,13 @@ public class Instructor {
 
     public void setInstructorDetail(InstructorDetail instructorDetail) {
         this.instructorDetail = instructorDetail;
+    }
+
+    public void add(Course tmpCourse) {
+        if(courses == null) {
+            courses = new ArrayList<>();
+        }
+        courses.add(tmpCourse);
+        tmpCourse.setInstructor(this);
     }
 }

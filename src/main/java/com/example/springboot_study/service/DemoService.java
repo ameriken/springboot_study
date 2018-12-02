@@ -1,5 +1,6 @@
 package com.example.springboot_study.service;
 
+import com.example.springboot_study.entity.Course;
 import com.example.springboot_study.entity.Instructor;
 import com.example.springboot_study.entity.InstructorDetail;
 import com.example.springboot_study.repository.InstructorDetailRepository;
@@ -7,7 +8,6 @@ import com.example.springboot_study.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service
@@ -54,5 +54,17 @@ public class DemoService {
         detail.getInstructor().setInstructorDetail(null);
         this.instructorDetailRepository.deleteById(2L);
         return "deleted";
+    }
+    public Instructor registerCourse() {
+        Instructor instructor = this.instructorRepository.findById(1L).get();
+
+        Course tmpCourse1 = new Course("Air Guitar - The Ultimate Guide");
+        Course tmpCourse2 = new Course("The Pinball - Masterclass");
+
+        instructor.add(tmpCourse1);
+        instructor.add(tmpCourse2);
+
+        return this.instructorRepository.save(instructor);
+
     }
 }

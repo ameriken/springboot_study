@@ -14,7 +14,13 @@ public class Course {
     @Column(name="title")
     private String title;
 
+    @ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name="instructor_id")
     private Instructor instructor;
+
+    // TODO: なぜここが必要なのかわからない
+    public Course() {
+    }
 
     public Course(String title) {
         this.title = title;
@@ -39,7 +45,6 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "id=" + id +
                 ", title='" + title + '\'' +
                 '}';
     }
