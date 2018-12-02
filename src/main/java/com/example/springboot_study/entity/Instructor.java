@@ -53,4 +53,12 @@ public class Instructor {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public InstructorDetail getInstructorDetail() {
+        return instructorDetail;
+    }
+
+    public void setInstructorDetail(InstructorDetail instructorDetail) {
+        this.instructorDetail = instructorDetail;
+    }
 }

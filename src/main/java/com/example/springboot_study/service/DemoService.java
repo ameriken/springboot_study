@@ -21,10 +21,17 @@ public class DemoService {
 
 
     public Instructor saveInstructor() {
+
+        InstructorDetail instructorDetail = new InstructorDetail();
+        instructorDetail.setHobby("game");
+        instructorDetail.setYoutubeChannel("kanekinfitness");
+
         Instructor instructor = new Instructor();
-        instructor.setEmail("test@gmail.com");
-        instructor.setFirstName("hoge");
-        instructor.setLastName("fuga");
+        instructor.setEmail("hogehoge@gmail.com");
+        instructor.setFirstName("hogehoge");
+        instructor.setLastName("fugafuga");
+        instructor.setInstructorDetail(instructorDetail);
+
         return this.instructorRepository.save(instructor);
     }
 }

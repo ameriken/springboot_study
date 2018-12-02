@@ -17,7 +17,7 @@ public class InstructorDetail {
     @Column(name="hobby")
     private String hobby;
 
-    public InstructorDetail(String youtubeChannel, String hobby) {
+    public InstructorDetail() {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
     }
