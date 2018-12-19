@@ -94,4 +94,14 @@ public class DemoController {
         }
         return "true Review";
     }
+
+    @GetMapping("/course_student")
+    public String registerCourseStudentDataAccess() {
+        try {
+            this.demoService.registerCourseStudent();
+        } catch(Exception e) {
+            return "false Course";
+        }
+        return "true course";
+    }
 }

@@ -1,16 +1,13 @@
 package com.example.springboot_study.service;
 
-import com.example.springboot_study.entity.Course;
-import com.example.springboot_study.entity.Instructor;
-import com.example.springboot_study.entity.InstructorDetail;
-import com.example.springboot_study.entity.Review;
+import com.example.springboot_study.entity.*;
 import com.example.springboot_study.repository.CourseRepository;
 import com.example.springboot_study.repository.InstructorDetailRepository;
 import com.example.springboot_study.repository.InstructorRepository;
+import com.example.springboot_study.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +17,14 @@ public class DemoService {
     private final InstructorRepository instructorRepository;
     private final InstructorDetailRepository instructorDetailRepository;
     private final CourseRepository courseRepository;
+    private final StudentRepository studentRepository;
 
     @Autowired
-    public DemoService(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository,CourseRepository courseRepository) {
+    public DemoService(InstructorRepository instructorRepository, InstructorDetailRepository instructorDetailRepository,CourseRepository courseRepository, StudentRepository studentRepository) {
         this.instructorRepository = instructorRepository;
         this.instructorDetailRepository = instructorDetailRepository;
         this.courseRepository = courseRepository;
+        this.studentRepository = studentRepository;
     }
 
 
@@ -95,5 +94,18 @@ public class DemoService {
         tmpCourse.addReview(new Review("AWESOMME!!!"));
         this.courseRepository.save(tmpCourse);
         return "success";
+    }
+
+    public Course registerCourseStudent() {
+
+        Course tmpCourse = new Course("Air Guitar - The Ultimate Guide");
+        Student tempStudent1 = new Student("John", "Doe", "jon@luv2code.com");
+        Student tempStudent2 = new Student("Mary", "public", "mary@luv2code.com");
+
+        tmpCourse.addStudent(tempStudent1);
+        tmpCourse.addStudent(tempStudent2);
+
+        return this.courseRepository.save(tmpCourse);
+
     }
 }
