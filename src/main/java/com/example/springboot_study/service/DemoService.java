@@ -61,6 +61,7 @@ public class DemoService {
         this.instructorDetailRepository.deleteById(2L);
         return "deleted";
     }
+
     public Instructor registerCourse() {
         Instructor instructor = this.instructorRepository.findById(1L).get();
 
@@ -71,6 +72,13 @@ public class DemoService {
         instructor.add(tmpCourse2);
 
         return this.instructorRepository.save(instructor);
+
+    }
+
+    public List<Instructor> getInstructor() {
+
+        List<Instructor> instructor = this.instructorRepository.findAllById(1L);
+        return instructor;
 
     }
 

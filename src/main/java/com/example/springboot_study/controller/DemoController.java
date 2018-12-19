@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -79,6 +80,15 @@ public class DemoController {
     public String reviewDataAccess() {
         try {
             this.demoService.reviewCourse();
+        } catch(Exception e) {
+            return "false Review";
+        }
+        return "true Review";
+    }
+    @GetMapping("/eagar_lazy")
+    public String eagarLazy() {
+        try {
+            List<Instructor> inst = this.demoService.getInstructor();
         } catch(Exception e) {
             return "false Review";
         }
