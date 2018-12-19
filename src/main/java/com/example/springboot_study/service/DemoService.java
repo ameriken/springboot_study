@@ -108,4 +108,22 @@ public class DemoService {
         return this.courseRepository.save(tmpCourse);
 
     }
+
+    public Course registerCourseStudentOther() {
+
+        Student st = this.studentRepository.getOne(16);
+
+        Course tmpCourse1 = new Course("Ribiki's Cube - how to speed cube");
+        Course tmpCourse2 = new Course("Atari 2600 - game development");
+
+        Student tempStudent1 = new Student("John", "Doe", "jon@luv2code.com");
+        Student tempStudent2 = new Student("Mary", "public", "mary@luv2code.com");
+
+        tmpCourse1.addStudent(st);
+        tmpCourse2.addStudent(st);
+
+        this.courseRepository.save(tmpCourse1);
+        return this.courseRepository.save(tmpCourse2);
+
+    }
 }
